@@ -1,10 +1,10 @@
 var app = app || {};
 
-app.Jumper = Backbone.model.extend({
+app.Jumper = Backbone.Model.extend({
 
     // defaults
     defaults: {
-        name: '',
+        name: 'Fail',
         selected: false
     }, 
 

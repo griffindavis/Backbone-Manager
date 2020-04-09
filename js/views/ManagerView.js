@@ -1,21 +1,25 @@
 var app = app || {};
 
 app.ManagerView = Backbone.View.extend({
-    el: 'manager', 
+    el: '#manager', 
 
     // templates
 
     // delegated events for creating new items and clearing others
     events: {
-        'keypress #new-jumper': 'createOnEnter'
+        'keypress #new-jumper': 'createOnEnter',
+        'click #destroy-all': 'destroyAll'
     }, 
 
     initialize: function() {
         // cache inputs and other elements
+        this.$input = this.$('#new-jumper');
+        this.$jumpers = this.$('#jumpers');
 
         // listen to events
         this.listenTo(app.Jumpers, 'add', this.addJumper);
         this.listenTo(app.Jumpers, 'filter', this.filterAll);
+        this.listenTo(app.Jumpers, 'all', this.render);
 
         app.Jumpers.fetch();
     }, 
@@ -23,31 +27,35 @@ app.ManagerView = Backbone.View.extend({
     render: function() {
         if (app.Jumpers.length) {
             // show elements
-            this.$main.show();
+            this.$jumpers.show()
 
         }
         else {
-            this.$main.hide();
+            this.$jumpers.hide();
         }
     }, 
 
-    addOne: function(jumper) {
-        var view = new app.JumperView({model: Jumper});
+    addJumper: function(jumper) {
+        var view = new app.JumperView({model: jumper});
         $('#jumper-list').append(view.render().el);
     },
 
     newAttributes: function() {
         return {
-            name: '',
+            name: this.$input.val().trim(),
             selected: false
         };
     },
 
-    createOnEnter: function(e) {
-        if (e.which !== ENTER_KEY || !this.$input.val().trim()) {
+    createOnEnter: function(event) {
+        if (event.which !== ENTER_KEY || !this.$input.val().trim()) {
             return;
         }
         app.Jumpers.create(this.newAttributes());
         this.$input.val('');
+    }, 
+    destroyAll: function() {
+        _.invoke(app.Jumpers.all(), 'destroy');
+        return false;
     }
 });

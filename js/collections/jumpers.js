@@ -13,6 +13,9 @@ var JumperList = Backbone.Collection.extend({
         return this.filter(function(jumper) {
             return jumper.get('selected');
         });
+    },
+    all: function() {
+        return this.models;
     }
 });
 

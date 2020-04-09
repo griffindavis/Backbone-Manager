@@ -12,7 +12,7 @@
             <label><%- name %></label>
             <button class="destroy"></button>
         </div>
-        <input class="edit" value="<%- title %>">
+        <input class="edit" value="<%- name %>">
     </script>
 
     <!--Load the requried files-->
@@ -22,11 +22,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
     
     <!--Load the JS files-->
+    <script src="js/models/jumper.js"></script>
+    <script src="js/collections/jumpers.js"></script>
+    <script src="js/views/jumpers.js"></script>
+    <script src="js/views/ManagerView.js"></script>
+    <script src="js/app.js"></script>
 
     <!--Begin the actual app html-->
     <section id="manager">
+        <section class="header">
+            <h1>Jumpers</h1>
+        </section>
         <section id="jumpers">
             <ul id="jumper-list"></ul>
+        </section>
+        <section id="footer">
+            <input id="new-jumper" placeholder="Enter a name" autofocus>
+            <button id="destroy-all">Destroy All</button>
         </section>
     </section>
     <div id="additional-info">
