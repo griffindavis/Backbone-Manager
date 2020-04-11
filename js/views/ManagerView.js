@@ -18,6 +18,7 @@ app.ManagerView = Backbone.View.extend({
 
         // listen to events
         this.listenTo(app.Jumpers, 'add', this.addJumper);
+        this.listenTo(app.Jumpers, 'remove', this.render);
         this.listenTo(app.Jumpers, 'filter', this.filterAll);
         this.listenTo(app.Jumpers, 'all', this.render);
 
@@ -55,7 +56,10 @@ app.ManagerView = Backbone.View.extend({
         this.$input.val('');
     }, 
     destroyAll: function() {
-        _.invoke(app.Jumpers.all(), 'destroy');
+        while (model = app.Jumpers.first()) {
+            console.log(model);
+            model.destroy();
+        }
         return false;
     }
 });
