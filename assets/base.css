@@ -14,10 +14,14 @@ html, body {
   height: 100%;
 }
 
-.center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
+.grid_container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: .25fr 1fr 1fr 1fr .25fr;
+      grid-template-rows: .25fr 1fr 1fr 1fr .25fr;
+  height: 100%;
 }
 
 .header {
@@ -26,19 +30,55 @@ html, body {
   margin: 10px;
   border: 2px var(--black) solid;
   text-align: center;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+  grid-area: 1 / 1 / span 1 / span 4;
+}
+
+.jumpers_container {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 1;
+  grid-area: 2 / 4 / span 3 / span 1;
+  margin: 10px;
+  padding: 0;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  border: 2px var(--black) solid;
+  height: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: .5fr 3fr .5fr;
+      grid-template-rows: .5fr 3fr .5fr;
 }
 
 .section_header {
-  font-weight: 100;
-  font-size: large;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  -ms-grid-row: 1;
+  grid-area: 1;
+}
+
+#jumpers {
+  grid-column-gap: 0;
+  width: calc(100vw * .25);
+  margin: 5px;
+  -ms-grid-row: 2;
+  grid-area: 2;
+  overflow-y: scroll;
+  border-top: 2px #d3d3d3 solid;
+  -webkit-box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
+          box-shadow: inset 0px 11px 8px -10px #CCC, inset 0px -11px 8px -10px #CCC;
 }
 
 .jumper {
   font-size: 1.5rem;
-  width: 100%;
   padding: 5px;
-  vertical-align: middle;
-  display: inline-block;
 }
 
 .jumper button {
@@ -46,27 +86,22 @@ html, body {
   margin: 5px;
 }
 
-.jumpers_container {
-  float: right;
-  position: relative;
-  width: 30%;
-  height: calc(100% - 12%);
+#footer {
+  text-align: center;
+  -ms-grid-row: 3;
+  grid-area: 3;
   margin: 10px;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  border: 2px var(--black) solid;
 }
 
-#footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  margin: 5px;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+.load_container {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: 2 / 1 / span 3 / span 3;
+  margin: 10px;
+  height: 100%;
+  border: 2px var(--black) solid;
 }
 
 .hide {

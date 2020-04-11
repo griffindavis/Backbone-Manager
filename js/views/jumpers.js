@@ -6,7 +6,7 @@ app.JumperView = Backbone.View.extend({
     template: _.template($('#jumper-template').html()), 
 
     events: {
-        'dblclick label': 'edit', 
+        'dblclick .jumper': 'edit', 
         'focusout .edit': 'close',
         'keypress .edit': 'updateOnEnter',
         'click .destroy': 'clear'
