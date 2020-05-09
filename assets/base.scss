@@ -71,6 +71,8 @@ html, body {
 }
 
 #footer {
+    display: flex;  // use flex-box
+    align-items: center; // applies to flex box along the cross axis (vertical)
     text-align: center;
     grid-area: 3;
     margin: 10px;
