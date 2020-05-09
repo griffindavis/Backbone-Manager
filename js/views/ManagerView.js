@@ -8,7 +8,8 @@ app.ManagerView = Backbone.View.extend({
     // delegated events for creating new items and clearing others
     events: {
         'keypress #new-jumper': 'createOnEnter',
-        'click #destroy-all': 'destroyAll'
+        'click #destroy-all': 'destroyAll',
+        'click #add-load': 'createLoad',
     }, 
 
     initialize: function() {
@@ -22,7 +23,10 @@ app.ManagerView = Backbone.View.extend({
         this.listenTo(app.Jumpers, 'filter', this.filterAll);
         this.listenTo(app.Jumpers, 'all', this.render);
 
+        this.listenTo(app.Loads, 'add', this.addLoad);
+
         app.Jumpers.fetch();
+        app.Loads.fetch();
     }, 
     
     render: function() {
@@ -61,5 +65,14 @@ app.ManagerView = Backbone.View.extend({
             model.destroy();
         }
         return false;
+    }, 
+
+    createLoad: function() {
+        app.Loads.create();
+    },
+
+    addLoad: function(load) {
+        let view = new app.LoadView({model: load});
+        $('#load-list').append(view.render().el);
     }
 });

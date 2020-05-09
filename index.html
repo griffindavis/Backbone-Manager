@@ -15,6 +15,14 @@
         </div>
     </script>
 
+    <script type="text/template" id="load-template">
+        <div class="load">
+            <label>Load <%- number %></label>
+            <button class="destroy-load">Destroy</button>
+        </div>
+
+    </script>
+
     <!--Load the requried files-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
@@ -23,8 +31,12 @@
     
     <!--Load the JS files-->
     <script src="js/models/jumper.js"></script>
+    <script src="js/models/load.js"></script>
     <script src="js/collections/jumpers.js"></script>
+    <script src="js/collections/loads.js"></script>
     <script src="js/views/jumpers.js"></script>
+    <script src="js/views/loadView.js"></script>
+    
     <script src="js/views/ManagerView.js"></script>
     <script src="js/app.js"></script>
 
@@ -49,9 +61,12 @@
                 <section class="section_header">
                     <h3>Currently on Load # X</h3>
                 </section>
-                <section class="loads">
-                    
+                <section id="loads">
+                    <ul id="load-list">
+
+                    </ul>
                 </section>
+                <button id="add-load">Add Load</button>
             </div>
     </section>
     
