@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backbone DZ Manager</title>
+    <link rel="stylesheet" href="assets/base.css">
+</head>
+<body>
+    <script type="text/template" id="jumper-template">
+        <div class="jumper">
+            <label><%- name %></label>
+            <input class="edit hide" value="<%- name %>">
+            <button class="destroy">Destroy</button>
+        </div>
+    </script>
+
+    <!--Load the requried files-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.0/backbone-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.1.16/backbone.localStorage-min.js"></script>
+    
+    <!--Load the JS files-->
+    <script src="js/models/jumper.js"></script>
+    <script src="js/collections/jumpers.js"></script>
+    <script src="js/views/jumpers.js"></script>
+    <script src="js/views/ManagerView.js"></script>
+    <script src="js/app.js"></script>
+
+    <!--Begin the actual app html-->
+    <section id="manager" class="grid_container">
+        <div class="header">
+            This is a header!
+        </div>
+            <div class="jumpers_container">
+                <section class="section_header">
+                    <h1>Jumpers</h1>
+                </section>
+                <section id="jumpers">
+                    <ul id="jumper-list" class=""></ul>
+                </section>
+                <section id="footer">
+                    <input id="new-jumper" placeholder="Enter a name" autofocus>
+                    <button id="destroy-all">Destroy All</button>
+                </section>
+            </div>
+            <div class="load_container">
+                <section class="section_header">
+                    <h3>Currently on Load # X</h3>
+                </section>
+                <section class="loads">
+                    
+                </section>
+            </div>
+    </section>
+    
+</body>
+</html>
