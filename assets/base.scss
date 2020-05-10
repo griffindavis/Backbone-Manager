@@ -83,6 +83,62 @@ html, body {
     margin: 10px;
     height: 100%;
     border: 2px var(--black) solid;
+
+    display: grid;
+
+    // on the wide screen this doesn't look the best
+    grid-template-rows: .5fr repeat(3, 1.1fr); // 1.1 lines up with the jumper table for now
+    grid-template-columns: repeat(4, 1fr);
+
+    .section_header {
+        // start on row 1 column 1 span 1 row and 5 columns
+        grid-area: 1 / 1 / 1 / 5;
+    }
+
+    #add-load {
+        grid-area: 5 / 4;
+        position: relative;
+        height: 20px;
+        width: 100px;
+        justify-self: right;
+    }
+
+    #loads {
+        grid-area: 2 / 1 / 5 / 5;
+        border-top: 2px #d3d3d3 solid;
+        box-shadow: inset 0px 11px 8px -10px #CCC,
+                    inset 0px -11px 8px -10px #CCC; 
+        
+    }
+
+    #load-list {
+        display: grid;
+        box-sizing: border-box;
+
+        // the sizing needs to be reworked based on the size of the screen
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 13vw);
+        height: 98%;
+        padding: 0px;
+
+        grid-auto-flow: row;
+        grid-auto-rows: 13vw;
+        overflow-y: scroll; 
+        scroll-snap-type: y mandatory;
+
+        justify-items: center;
+ 
+        .load {
+            width: calc(70vw * .2); // again sizing is arbitrary right now
+            max-width: 200px;
+            height: calc(14vh);
+            border: 2px grey solid;
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5%;
+            text-align: center;
+            scroll-snap-align: start;
+        }
+    }
 }
 
 .hide {
