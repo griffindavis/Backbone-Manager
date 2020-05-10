@@ -123,6 +123,17 @@ html, body {
   grid-area: 1 / 1 / 1 / 5;
 }
 
+.load_container #add-load {
+  -ms-grid-row: 5;
+  -ms-grid-column: 4;
+  grid-area: 5 / 4;
+  position: relative;
+  height: 20px;
+  width: 100px;
+  -ms-grid-column-align: right;
+      justify-self: right;
+}
+
 .load_container #loads {
   -ms-grid-row: 2;
   -ms-grid-row-span: 3;
@@ -135,28 +146,34 @@ html, body {
 }
 
 .load_container #load-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 1em;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  -ms-grid-rows: (13vw)[4];
+      grid-template-rows: repeat(4, 13vw);
+  height: 98%;
+  padding: 0px;
+  grid-auto-flow: row;
+  grid-auto-rows: 13vw;
+  overflow-y: scroll;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
+  justify-items: center;
 }
 
 .load_container #load-list .load {
-  width: calc(100vw * .7 * .2);
-  height: calc(100vh * .7 * .2);
+  width: calc(70vw * .2);
+  max-width: 200px;
+  height: calc(14vh);
   border: 2px grey solid;
   -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 5%;
-  margin: .5em;
   text-align: center;
+  scroll-snap-align: start;
 }
 
 .hide {

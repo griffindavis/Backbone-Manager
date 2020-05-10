@@ -9,9 +9,11 @@ app.LoadView = Backbone.View.extend({
         'click .destroy-load': 'clear',
     }, 
 
-    initialize: function() {
+    initialize: function(){
+
         this.listenTo(this.model, 'change', this.redner);
         this.listenTo(this.model, 'destroy', this.remove);
+        this.listenTo(this.model, 'change:number', this.render);
     }, 
 
     render: function() {
@@ -32,5 +34,5 @@ app.LoadView = Backbone.View.extend({
 
     remove: function() {
         $(this.el).remove();
-    }
+    }, 
 })
