@@ -1,5 +1,8 @@
 :root {
   --black: #010101;
+  --grey: #ccc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html, body {
@@ -10,50 +13,79 @@ html, body {
   overflow: hidden;
 }
 
-#manager {
-  height: 100%;
+.container {
+  margin: 5px 10px 5px 10px;
+  padding: 0;
 }
 
 .grid_container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 1fr 1fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: .25fr 1fr 1fr 1fr .25fr;
-      grid-template-rows: .25fr 1fr 1fr 1fr .25fr;
+  -ms-grid-columns: .2fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: .2fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
   height: 100%;
 }
 
-.header {
-  font-size: 2rem;
-  padding: 10px;
-  margin: 10px;
-  border: 2px var(--black) solid;
-  text-align: center;
+.side_nav {
   -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
+  -ms-grid-row-span: 3;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 4;
-  grid-area: 1 / 1 / span 1 / span 4;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / span 3 / span 1;
+  border: 2px var(--black) solid;
+  height: 98%;
+  margin: 5px 0px 5px 0px;
 }
 
 .jumpers_container {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-row-span: 3;
-  -ms-grid-column: 4;
+  -ms-grid-column: 5;
   -ms-grid-column-span: 1;
-  grid-area: 2 / 4 / span 3 / span 1;
-  margin: 10px;
-  padding: 0;
+  grid-area: 1 / 5 / span 3 / span 1;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   border: 2px var(--black) solid;
-  height: 100%;
+  height: 98%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: .5fr 3fr .5fr;
       grid-template-rows: .5fr 3fr .5fr;
+}
+
+.jumpers_container .jumper_tabs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0px 5px 0px 5px;
+}
+
+.jumpers_container .jumper_tabs span {
+  border: 1px var(--black) solid;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin: 0px 1px 0px 1px;
+  background: var(--grey);
+  font-size: .8em;
+  padding: 8px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.jumpers_container .jumper_tabs :hover {
+  cursor: pointer;
+}
+
+.jumpers_container .jumper_tabs .selected {
+  background: white;
+  border-bottom: none;
 }
 
 .section_header {
@@ -68,6 +100,7 @@ html, body {
   grid-column-gap: 0;
   width: calc(100vw * .25);
   margin: 5px;
+  margin-top: 0;
   -ms-grid-row: 2;
   grid-area: 2;
   overflow-y: scroll;
@@ -100,13 +133,12 @@ html, body {
 }
 
 .load_container {
-  -ms-grid-row: 2;
+  -ms-grid-row: 1;
   -ms-grid-row-span: 3;
-  -ms-grid-column: 1;
+  -ms-grid-column: 2;
   -ms-grid-column-span: 3;
-  grid-area: 2 / 1 / span 3 / span 3;
-  margin: 10px;
-  height: 100%;
+  grid-area: 1 / 2 / span 3 / span 3;
+  height: 98%;
   border: 2px var(--black) solid;
   display: -ms-grid;
   display: grid;
@@ -152,12 +184,12 @@ html, body {
           box-sizing: border-box;
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
-  -ms-grid-rows: (13vw)[4];
-      grid-template-rows: repeat(4, 13vw);
+  -ms-grid-rows: (35vh)[2];
+      grid-template-rows: repeat(2, 35vh);
   height: 98%;
   padding: 0px;
   grid-auto-flow: row;
-  grid-auto-rows: 13vw;
+  grid-auto-rows: 35vh;
   overflow-y: scroll;
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
@@ -167,13 +199,47 @@ html, body {
 .load_container #load-list .load {
   width: calc(70vw * .2);
   max-width: 200px;
-  height: calc(14vh);
+  height: calc(30vh);
   border: 2px grey solid;
   -webkit-box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   border-radius: 5%;
   text-align: center;
   scroll-snap-align: start;
+}
+
+.load_container #load-list .load .load_label {
+  font-size: 1.2em;
+}
+
+.load_container #load-list .load .draggable_dots {
+  text-align: left;
+  font-size: 2em;
+  margin-left: 5px;
+  margin-top: -5px;
+}
+
+.load_container #load-list .load .draggable_dots:hover {
+  cursor: pointer;
+}
+
+.load_container #load-list .load .load_jumpers {
+  height: 65%;
+  margin: 10px;
+  border: 1px var(--black) solid;
+}
+
+.load_container #load-list .load .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.load_container #load-list .load button {
+  height: 10px;
 }
 
 .hide {

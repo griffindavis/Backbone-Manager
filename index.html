@@ -8,7 +8,7 @@
 </head>
 <body>
     <script type="text/template" id="jumper-template">
-        <div class="jumper">
+        <div class="jumper" draggable="true">
             <label><%- name %></label>
             <input class="edit hide" value="<%- name %>">
             <button class="destroy">Destroy</button>
@@ -16,9 +16,20 @@
     </script>
 
     <script type="text/template" id="load-template">
-        <div class="load">
-            <label>Load <%- number %></label>
-            <button class="destroy-load">Destroy</button>
+        <div class="load" draggable="true">
+            <div class="draggable_dots">...</div>
+            <label class="load_label">Load # <%- number %></label>
+            <div class="load_jumpers">
+                <ul>
+                </ul>
+            </div>
+            <div class="footer">
+                <div>
+                    <input type="checkbox" name="completed">
+                    <label for="completed">Complete</label>
+                </div>
+                <button class="destroy-load">Destroy</button>
+            </div>
         </div>
 
     </script>
@@ -41,33 +52,36 @@
     <script src="js/app.js"></script>
 
     <!--Begin the actual app html-->
-    <section id="manager" class="grid_container">
-        <div class="header">
-            This is a header!
+    <section id="manager" class="grid_container container">
+        <div class="side_nav"></div>
+        <div class="jumpers_container container">
+            <section class="section_header">
+                <h1>Jumpers</h1>
+                <div class="jumper_tabs">
+                    <span>Experienced</span>
+                    <span>Instructor</span>
+                    <span>Student</span>
+                </div>
+            </section>
+            <section id="jumpers">
+                <ul id="jumper-list" class=""></ul>
+            </section>
+            <section id="footer">
+                <input id="new-jumper" placeholder="Enter a name" autofocus>
+                <button id="destroy-all">Destroy All</button>
+            </section>
         </div>
-            <div class="jumpers_container">
-                <section class="section_header">
-                    <h1>Jumpers</h1>
-                </section>
-                <section id="jumpers">
-                    <ul id="jumper-list" class=""></ul>
-                </section>
-                <section id="footer">
-                    <input id="new-jumper" placeholder="Enter a name" autofocus>
-                    <button id="destroy-all">Destroy All</button>
-                </section>
-            </div>
-            <div class="load_container">
-                <section class="section_header">
-                    <h3>Currently on Load # <span id="load-number">test</span></h3>
-                </section>
-                <section id="loads">
-                    <ul id="load-list">
+        <div class="load_container container">
+            <section class="section_header">
+                <h3>Currently on Load # <span id="load-number">test</span></h3>
+            </section>
+            <section id="loads">
+                <ul id="load-list">
 
-                    </ul>
-                </section>
-                <button id="add-load">Add Load</button>
-            </div>
+                </ul>
+            </section>
+            <button id="add-load">Add Load</button>
+        </div>
     </section>
     
 </body>
